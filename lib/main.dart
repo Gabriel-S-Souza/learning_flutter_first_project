@@ -31,23 +31,27 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Gabriel"),
+        title: const Text("App teste"),
         backgroundColor: Colors.amber,
       ),
-      body: Center(
-          child: Text(
-          "Você clicou no botão $counter vezes",
-          textScaleFactor: 2,
-        )
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            counter++;
-          });
-        },
-        backgroundColor: Colors.amber,
-        child: const Icon(Icons.add),
+      body: SizedBox(
+        height: double.infinity,
+        width: double.infinity,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                for (var i = 0; i < 10; i++) //Adicionando um for para replicar o container
+                  Container(
+                  width: 80,
+                  height: 80,
+                  color: Colors.red,
+                  margin: const EdgeInsets.all(12),
+                ),
+              ]
+                  ),
+          )
       ),
     );
   }
