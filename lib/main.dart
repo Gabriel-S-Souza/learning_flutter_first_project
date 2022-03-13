@@ -33,48 +33,38 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Learning Flutter - List App"),
+          title: const Text("Learning Flutter"),
           backgroundColor: Colors.amber,
         ),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                    controller: textController,
-                    )
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      final String text =
-                          textController.text; //Pegando o texto do TextField
-                      setState(() {
-                        list.add(text);
-                      });
-                      textController.clear();
-                    },
-                    icon: const Icon(Icons.add),
-                  )
-                ],
+        body: Center( //Joga o(s) filho(s) p/ o centro
+          child: Stack(
+            alignment: AlignmentDirectional.center,
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                child: Image.network(
+                  "https://img.freepik.com/vetores-gratis/fundo-de-formas-organicas-abstratas-de-mao-desenhada_23-2148424772.jpg",
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: list.length,
-                itemBuilder: (context, index) {
-                  //Neste argumento funciona o loop
-                  final item = list[index];
-
-                  return ListTile(
-                    title: Text(item),
-                  );
-                },
+              Container(
+                color: Colors.lightBlue,
+                height: 100,
+                width: 100,
               ),
-            ),
-          ],
+              Container(
+                color: Colors.orange,
+                height: 50,
+                width: 50,
+              ),
+              Container(
+                color: Colors.greenAccent,
+                height: 25,
+                width: 25,
+              ),
+            ],
+          ),
         )
     );
   }
