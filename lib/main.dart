@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       // Utilizando o InheritedWidget
-      home:  MyHomePage(),
+      home: MyHomePage(),
     );
   }
 }
@@ -25,34 +26,54 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var counter = 0;
+  final textController = TextEditingController();
+  final List<String> list = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("App teste"),
-        backgroundColor: Colors.amber,
-      ),
-      body: SizedBox(
-        height: double.infinity,
-        width: double.infinity,
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                for (var i = 0; i < 10; i++) //Adicionando um for para replicar o container
-                  Container(
-                  width: 80,
-                  height: 80,
-                  color: Colors.red,
-                  margin: const EdgeInsets.all(12),
-                ),
-              ]
-                  ),
-          )
-      ),
-    );
+        appBar: AppBar(
+          title: const Text("App teste"),
+          backgroundColor: Colors.amber,
+        ),
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Expanded(
+                      child: TextField(
+                    controller: textController,
+                  )),
+                  IconButton(
+                    onPressed: () {
+                      final String text =
+                          textController.text; //Pegando o texto do TextField
+                      setState(() {
+                        list.add(text);
+                      });
+                      textController.clear();
+                    },
+                    icon: const Icon(Icons.add),
+                  )
+                ],
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: list.length,
+                itemBuilder: (context, index) {
+                  //Neste argumento funciona o loop
+                  final item = list[index];
+
+                  return ListTile(
+                    title: Text(item),
+                  );
+                },
+              ),
+            ),
+          ],
+        ));
   }
 }
