@@ -33,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("App teste"),
+          title: const Text("Learning Flutter - List App"),
           backgroundColor: Colors.amber,
         ),
         body: Column(
