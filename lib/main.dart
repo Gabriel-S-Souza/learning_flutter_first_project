@@ -43,9 +43,10 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Row(
                 children: [
                   Expanded(
-                      child: TextField(
+                    child: TextField(
                     controller: textController,
-                  )),
+                    )
+                  ),
                   IconButton(
                     onPressed: () {
                       final String text =
@@ -74,6 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ],
-        ));
+        )
+    );
   }
 }
