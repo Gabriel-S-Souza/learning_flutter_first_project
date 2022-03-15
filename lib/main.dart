@@ -34,41 +34,47 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Learning Flutter"),
-          backgroundColor: Colors.amber,
-        ),
-        body: Center( //Joga o(s) filho(s) p/ o centro
-          child: Stack(
-            alignment: AlignmentDirectional.center,
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                child: Image.asset(
-                  "assets/images/gradient-forms.jpg",
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Container(
-                color: Colors.black.withOpacity(0.5), //Colocando opacidade na cor
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-
-              ),
-              Container(
-                color: Colors.orange,
-                height: 50,
-                width: 50,
-              ),
-              Container(
-                color: Colors.greenAccent,
-                height: 25,
-                width: 25,
-              ),
-            ],
+      appBar: AppBar(
+        title: const Text("Learning Flutter"),
+        backgroundColor: Colors.amber,
+      ),
+      body: Stack(
+        fit: StackFit.expand,
+        alignment: AlignmentDirectional.center,
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: Image.asset(
+              "assets/images/gradient-forms.jpg",
+              fit: BoxFit.cover,
+            ),
           ),
-        )
+          Container(
+            color: Colors.black.withOpacity(0.5), //Colocando opacidade na cor
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+
+          ),
+          Positioned(
+            top: MediaQuery.of(context).size.height/1.56,
+            left: MediaQuery.of(context).size.width/3.2,
+            child: Column(
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text('Entrar')
+                ),
+                const FlutterLogo(
+                  style: FlutterLogoStyle.horizontal,
+                  size: 150,
+                  textColor: Colors.white,
+                ),
+              ], 
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
