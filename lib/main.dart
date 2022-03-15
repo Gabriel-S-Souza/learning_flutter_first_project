@@ -11,6 +11,8 @@ class MyApp extends StatelessWidget {
   // Este widget é a raiz do seu aplicativo.
   @override
   Widget build(BuildContext context) {
+
+    
     return const MaterialApp(
       // Utilizando o InheritedWidget
       home: MyHomePage(),
@@ -43,15 +45,16 @@ class _MyHomePageState extends State<MyHomePage> {
               SizedBox(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
-                child: Image.network(
-                  "https://img.freepik.com/vetores-gratis/fundo-de-formas-organicas-abstratas-de-mao-desenhada_23-2148424772.jpg",
+                child: Image.asset(
+                  "assets/images/gradient-forms.jpg",
                   fit: BoxFit.cover,
                 ),
               ),
               Container(
-                color: Colors.lightBlue,
-                height: 100,
-                width: 100,
+                color: Colors.black.withOpacity(0.5), //Colocando opacidade na cor
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+
               ),
               Container(
                 color: Colors.orange,
